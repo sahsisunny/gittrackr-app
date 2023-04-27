@@ -1,51 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:gravity="center">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/app_logo"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/app_descp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </com.google.android.material.imageview.ShapeableImageView>
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"/>
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/app_descp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:lineSpacingExtra="10sp"
-        android:padding="10dp"
+        android:padding="30dp"
         android:text="@string/app_description"
         android:textSize="18sp"
-        android:justificationMode="inter_word"
-        app:layout_constraintBottom_toTopOf="@+id/login_button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_logo" />
+        android:textAlignment="center"
+        android:lineSpacingExtra="8sp"/>
+
+    <EditText
+        android:id="@+id/org_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:hint="@string/organization_name"
+        android:textAlignment="center"
+        android:inputType="text"
+        android:minHeight="50dp"
+        android:autofillHints="organization"
+        app:hintEnabled="true" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="10dp"
-        android:backgroundTint="@color/black"
-        android:text="@string/view"
-        android:textColor="@color/white"
+        android:text="@string/view_list"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_descp" />
+        android:layout_margin="10dp"
+        app:icon="@drawable/view_icon"
+        android:layout_gravity="bottom"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/exit"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        app:icon="@drawable/round_logout"
+        android:layout_gravity="bottom"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

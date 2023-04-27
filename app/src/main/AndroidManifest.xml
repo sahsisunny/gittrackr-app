@@ -15,16 +15,16 @@
         android:theme="@style/Theme.GitTrackr"
         tools:targetApi="31">
         <activity
-            android:name=".UserDetailsActivity"
+            android:name=".screens.UserDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".UserListActivity"
+            android:name=".screens.UserListActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".screens.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".screens.MainActivity"
             android:exported="true" />
     </application>
 

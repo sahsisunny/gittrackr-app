@@ -8,10 +8,9 @@ import retrofit2.http.Path
 
 interface UserAPIInterface {
 
-    @GET("orgs/github/members")
-    fun getUsersData(): Call<List<UsersItem>>
+    @GET("orgs/{orgName}/members")
+    fun getUsersData(@Path("orgName") orgName: String?): Call<List<UsersItem>>
 
-//    for user details
     @GET("users/{username}")
     fun getUserDetails(@Path("username") username: String): Call<UserDetails>
 //

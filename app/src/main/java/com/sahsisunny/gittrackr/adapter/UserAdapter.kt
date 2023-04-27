@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.sahsisunny.gittrackr.R
-import com.sahsisunny.gittrackr.UserDetailsActivity
+import com.sahsisunny.gittrackr.screens.UserDetailsActivity
 import com.sahsisunny.gittrackr.model.UsersItem
 import de.hdodenhof.circleimageview.CircleImageView
 

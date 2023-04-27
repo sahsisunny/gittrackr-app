@@ -1,10 +1,11 @@
-package com.sahsisunny.gittrackr
+package com.sahsisunny.gittrackr.screens
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sahsisunny.gittrackr.R
 import com.sahsisunny.gittrackr.adapter.UserAdapter
 import com.sahsisunny.gittrackr.model.UsersItem
 import com.sahsisunny.gittrackr.services.UserAPIInterface
@@ -25,21 +26,25 @@ class UserListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_list)
 
         rvUser = findViewById(R.id.user_rv)
+        val orgName = intent.getStringExtra("orgName")
         rvUser.layoutManager = LinearLayoutManager(this)
-        getUserData()
+        if (orgName != null) {
+            getUserData(orgName)
+        }
     }
 
 
-    private fun getUserData() {
+    private fun getUserData(orgName: String?) {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_API)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
             .create(UserAPIInterface::class.java)
 
-        val userResponse = retrofit.getUsersData()
+        val call = retrofit.getUsersData(orgName)
 
-        userResponse.enqueue(object : Callback<List<UsersItem>> {
+        call.enqueue(object : Callback<List<UsersItem>> {
             override fun onResponse(
                 call: Call<List<UsersItem>>,
                 response: Response<List<UsersItem>>,

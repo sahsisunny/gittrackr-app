@@ -1,9 +1,10 @@
-package com.sahsisunny.gittrackr
+package com.sahsisunny.gittrackr.screens
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.sahsisunny.gittrackr.R
 import com.sahsisunny.gittrackr.adapter.UserDetailsAdapter
 import com.sahsisunny.gittrackr.model.UserDetails
 import com.sahsisunny.gittrackr.services.UserAPIInterface

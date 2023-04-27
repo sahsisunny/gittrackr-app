@@ -12,7 +12,7 @@ import com.sahsisunny.gittrackr.R
 import com.sahsisunny.gittrackr.model.UserDetails
 import de.hdodenhof.circleimageview.CircleImageView
 
-class UserDetailsAdapter(private val con : Context, private val userDetails: UserDetails) :
+class UserDetailsAdapter(private val con: Context, private val userDetails: UserDetails) :
     RecyclerView.Adapter<UserDetailsAdapter.UserDetailsViewHolder>() {
     inner class UserDetailsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var userImage: CircleImageView = itemView.findViewById(R.id.user_image)
@@ -39,8 +39,10 @@ class UserDetailsAdapter(private val con : Context, private val userDetails: Use
         holder.nameTextView.text = userDetails.name
         holder.loginTextView.text = userDetails.login
         holder.bioTextView.text = userDetails.bio
-        holder.followersTextView.text = userDetails.followers.toString()
-        holder.followingTextView.text = userDetails.following.toString()
+        val followers = "${userDetails.followers} Followers"
+        val following = "${userDetails.following} Following"
+        holder.followersTextView.text = followers
+        holder.followingTextView.text = following
         holder.githubUrlButton.setOnClickListener {
             val intent = android.content.Intent(android.content.Intent.ACTION_VIEW)
             intent.data = android.net.Uri.parse(userDetails.html_url)
@@ -48,12 +50,11 @@ class UserDetailsAdapter(private val con : Context, private val userDetails: Use
         }
         holder.reposUrlButton.setOnClickListener {
             val intent = android.content.Intent(android.content.Intent.ACTION_VIEW)
-            intent.data = android.net.Uri.parse(userDetails.repos_url)
+            val username = userDetails.login
+            val repoURL = "https://github.com/$username?tab=repositories"
+            intent.data = android.net.Uri.parse(repoURL)
             con.startActivity(intent)
         }
-
-
-
     }
 
 }

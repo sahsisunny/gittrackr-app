@@ -1,14 +1,17 @@
 <resources>
     <string name="app_name">GitTrackr</string>
-    <string name="title_activity_splash_screen">SplashScreen</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="gittrackr">GitTrackr</string>
-    <string name="github_username">GitHub Username</string>
     <string name="organization_name">Organization Name</string>
-    <string name="submit">Submit</string>
-    <string name="remember_me">Remember Me</string>
-    <string name="app_description">This is a GitTrackr app. It is built using the GitHub API.In this project, I have used the GitHub API to fetch the data. It is also responsive and looks good on all devices. In this app fetch the data from the github like pull request, issues and assigned issues. I have also added the feature to filter the data. and show stats of the data.</string>
+    <string name="app_description">View your GitHub organization members and their details with ease. Find and filter through the list, and view detailed profiles to stay up-to-date with their activity. \nImprove your collaboration on GitHub today!</string>
     <string name="view">View</string>
     <string name="app_logo">App Logo</string>
+    <string name="DUMMY_NAME">Sunny Sahsi</string>
+    <string name="DUMMY_USERNAME">sahsisunny</string>
+    <string name="DUMMY_BIO">Passionate full-stack developer with experience in developing web applications using React, Node.js, and MongoDB. Excited about using technology to solve real-world problems and constantly seeking new challenges to expand my skillset. Open to collaboration and always looking for opportunities to contribute to meaningful open-source projects.</string>
+    <string name="DUMMY_FOLLOWERS">96 followers</string>
+    <string name="DUMMY_FOLLOWING">12 following</string>
+    <string name="view_on_github">GitHub</string>
+    <string name="view_repos">Repos</string>
+    <string name="view_list">View List</string>
+    <string name="exit">Exit</string>
+    <string name="loading_animation">Loading Animation</string>
 </resources>
