@@ -39,7 +39,7 @@
         android:layout_gravity="bottom"
         android:layout_margin="10dp"
         android:backgroundTint="@color/black"
-        android:text="@string/login"
+        android:text="@string/view"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
