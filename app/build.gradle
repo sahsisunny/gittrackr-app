@@ -6,7 +6,6 @@ plugins {
 }
 
 
-
 android {
     namespace 'com.sahsisunny.gittrackr'
     compileSdk 33
@@ -40,7 +39,6 @@ android {
         viewBinding true
     }
 }
-
 
 
 dependencies {

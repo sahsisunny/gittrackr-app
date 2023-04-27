@@ -5,5 +5,5 @@ data class UsersItem(
     val html_url: String,
     val id: Int,
     val login: String,
-    val url: String
+    val url: String,
 )

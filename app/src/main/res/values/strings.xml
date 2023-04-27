@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GitTrackr</string>
     <string name="organization_name">Organization Name</string>
-    <string name="app_description">View your GitHub organization members and their details with ease. Find and filter through the list, and view detailed profiles to stay up-to-date with their activity. \nImprove your collaboration on GitHub today!</string>
+    <string name="app_description">View your GitHub organization members and their details with ease. Find and filter through the list, and view detailed profiles to stay up-to-date with their activity.</string>
     <string name="view">View</string>
     <string name="app_logo">App Logo</string>
     <string name="DUMMY_NAME">Sunny Sahsi</string>

@@ -8,10 +8,10 @@ import retrofit2.http.Path
 
 interface UserAPIInterface {
 
-    @GET("orgs/{orgName}/members")
+    @GET("orgs/{orgName}/members?per_page=100")
     fun getUsersData(@Path("orgName") orgName: String?): Call<List<UsersItem>>
 
-    @GET("users/{username}")
+    @GET("users/{username}?per_page=100")
     fun getUserDetails(@Path("username") username: String): Call<UserDetails>
-//
+
 }

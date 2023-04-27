@@ -9,6 +9,7 @@ import com.sahsisunny.gittrackr.R
 import com.sahsisunny.gittrackr.adapter.UserAdapter
 import com.sahsisunny.gittrackr.model.UsersItem
 import com.sahsisunny.gittrackr.services.UserAPIInterface
+import com.sahsisunny.gittrackr.utils.Constants
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,11 +17,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class UserListActivity : AppCompatActivity() {
-    private var BASE_API = "https://api.github.com/"
+    companion object {
+        const val BASE_API = Constants.BASE_API
+    }
 
     private lateinit var rvUser: RecyclerView
     lateinit var userAdapter: UserAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_list)
@@ -32,7 +34,6 @@ class UserListActivity : AppCompatActivity() {
             getUserData(orgName)
         }
     }
-
 
     private fun getUserData(orgName: String?) {
         val retrofit = Retrofit.Builder()
@@ -54,15 +55,11 @@ class UserListActivity : AppCompatActivity() {
                 rvUser.adapter = userAdapter
             }
 
-
             override fun onFailure(call: Call<List<UsersItem>>, t: Throwable) {
                 Log.d("MainActivity", "onFailure: ${t.message}")
             }
-
         })
     }
-
-
 }
 
 

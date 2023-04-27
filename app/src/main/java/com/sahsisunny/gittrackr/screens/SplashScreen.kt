@@ -1,29 +1,39 @@
 package com.sahsisunny.gittrackr.screens
 
-import androidx.appcompat.app.AppCompatActivity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.sahsisunny.gittrackr.R
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @SuppressLint("CustomSplashScreen")
-class SplashScreen : AppCompatActivity() {
+class SplashScreen : AppCompatActivity(), CoroutineScope by CoroutineScope(Dispatchers.Main) {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
+        // Make the splash screen full screen
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+        // Launch the main activity after 2 seconds
+        launch {
+            delay(2000L)
+            val intent = Intent(this@SplashScreen, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, 2000)
+        }
+    }
+
+    // Cancel the coroutine scope when the activity is destroyed to avoid memory leaks
+    override fun onDestroy() {
+        super.onDestroy()
+        cancel()
     }
 }

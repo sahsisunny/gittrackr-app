@@ -21,9 +21,6 @@
             android:name=".screens.UserListActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
             android:name=".screens.SplashScreen"
             android:exported="true">
             <intent-filter>
