@@ -32,11 +32,7 @@ class UserAdapter(private var con: Context, private var list: List<UsersItem>) :
         val user = list[position]
         holder.userName.text = user.login
         Glide.with(con).load(user.avatar_url).into(holder.userImage)
-//        holder.viewButton.setOnClickListener {
-//            val intent = android.content.Intent(android.content.Intent.ACTION_VIEW)
-//            intent.data = android.net.Uri.parse(user.html_url)
-//            con.startActivity(intent)
-//        }
+
         holder.viewButton.setOnClickListener {
             val intent = android.content.Intent(con, UserDetailsActivity::class.java)
             intent.putExtra("login", user.login)
