@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sahsisunny.gittrackr.R
 import com.sahsisunny.gittrackr.adapter.UserAdapter
-import com.sahsisunny.gittrackr.model.UsersItem
+import com.sahsisunny.gittrackr.model.User
 import com.sahsisunny.gittrackr.services.UserAPIInterface
 import com.sahsisunny.gittrackr.utils.Constants
 import retrofit2.Call
@@ -45,17 +45,17 @@ class UserListActivity : AppCompatActivity() {
 
         val call = retrofit.getUsersData(orgName)
 
-        call.enqueue(object : Callback<List<UsersItem>> {
+        call.enqueue(object : Callback<List<User>> {
             override fun onResponse(
-                call: Call<List<UsersItem>>,
-                response: Response<List<UsersItem>>,
+                call: Call<List<User>>,
+                response: Response<List<User>>,
             ) {
                 val responseBody = response.body()!!
                 userAdapter = UserAdapter(this@UserListActivity, responseBody)
                 rvUser.adapter = userAdapter
             }
 
-            override fun onFailure(call: Call<List<UsersItem>>, t: Throwable) {
+            override fun onFailure(call: Call<List<User>>, t: Throwable) {
                 Log.d("MainActivity", "onFailure: ${t.message}")
             }
         })

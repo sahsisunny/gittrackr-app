@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.sahsisunny.gittrackr.R
-import com.sahsisunny.gittrackr.model.UsersItem
+import com.sahsisunny.gittrackr.model.User
 import com.sahsisunny.gittrackr.screens.UserDetailsActivity
 import de.hdodenhof.circleimageview.CircleImageView
 
-class UserAdapter(private var con: Context, private var list: List<UsersItem>) :
+class UserAdapter(private var con: Context, private var list: List<User>) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     inner class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
