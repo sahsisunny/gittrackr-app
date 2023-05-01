@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.sahsisunny.gittrackr.R
@@ -32,6 +33,9 @@ class HomeFragment : Fragment() {
             handleLoginButtonClick()
         }
         exitButton.setOnClickListener {
+            requireActivity().finish()
+        }
+        requireActivity().onBackPressedDispatcher.addCallback {
             requireActivity().finish()
         }
         return view
