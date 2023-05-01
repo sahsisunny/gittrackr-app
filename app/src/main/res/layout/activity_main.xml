@@ -1,55 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    tools:context=".activity.MainActivity">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/logo" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="8sp"
-        android:padding="30dp"
-        android:text="@string/app_description"
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
 
-    <EditText
-        android:id="@+id/org_name_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints="organization"
-        android:hint="@string/organization_name"
-        android:inputType="text"
-        android:minHeight="50dp"
-        android:padding="10dp"
-        android:textAlignment="center"
-        app:hintEnabled="true" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/login_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="10dp"
-        android:text="@string/view_list"
-        android:textSize="20sp"
-        app:icon="@drawable/view_icon" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/exit_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="10dp"
-        android:text="@string/exit"
-        android:textSize="20sp"
-        app:icon="@drawable/round_logout" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

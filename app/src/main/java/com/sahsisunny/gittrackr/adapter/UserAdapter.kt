@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.sahsisunny.gittrackr.R
 import com.sahsisunny.gittrackr.model.UsersItem
-import com.sahsisunny.gittrackr.screens.UserDetailsActivity
 import de.hdodenhof.circleimageview.CircleImageView
 
 class UserAdapter(private var con: Context, private var list: List<UsersItem>) :
@@ -34,9 +35,11 @@ class UserAdapter(private var con: Context, private var list: List<UsersItem>) :
         Glide.with(con).load(user.avatar_url).into(holder.userImage)
 
         holder.viewButton.setOnClickListener {
-            val intent = android.content.Intent(con, UserDetailsActivity::class.java)
-            intent.putExtra("login", user.login)
-            con.startActivity(intent)
+//            open user details fragment
+            val bundle =
+                bundleOf("userName" to user.login) // for recieving data in UserDetailsFragment use arguments?.getString("userName")
+            it.findNavController()
+                .navigate(R.id.action_userListFragment_to_userDetailsFragment, bundle)
         }
     }
 
