@@ -1,5 +1,5 @@
 package com.sahsisunny.gittrackr.utils
 
 object Constants {
-    const val BASE_API = "https://api.github.com/"
+    const val GIT_API_BASE_URL = "https://api.github.com/"
 }

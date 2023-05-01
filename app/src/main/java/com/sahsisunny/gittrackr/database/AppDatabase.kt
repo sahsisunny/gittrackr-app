@@ -8,7 +8,7 @@ import com.sahsisunny.gittrackr.model.User
 import com.sahsisunny.gittrackr.model.UserDetails
 
 @Database(
-    entities = [User::class,UserDetails::class],
+    entities = [User::class, UserDetails::class],
     version = 1,
     exportSchema = false
 )

@@ -1,4 +1,4 @@
-package com.sahsisunny.gittrackr.screens
+package com.sahsisunny.gittrackr.userinterface
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import com.sahsisunny.gittrackr.R
+import com.sahsisunny.gittrackr.userinterface.activities.home.HomeActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -25,7 +26,7 @@ class SplashScreen : AppCompatActivity(), CoroutineScope by CoroutineScope(Dispa
         // Launch the main activity after 2 seconds
         launch {
             delay(2000L)
-            val intent = Intent(this@SplashScreen, MainActivity::class.java)
+            val intent = Intent(this@SplashScreen, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }
