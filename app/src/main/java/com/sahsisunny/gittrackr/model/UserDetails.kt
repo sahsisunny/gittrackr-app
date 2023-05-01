@@ -1,9 +1,13 @@
 package com.sahsisunny.gittrackr.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "userDetails")
 data class UserDetails(
+    @PrimaryKey val id: Int,
     val avatar_url: String,
     val html_url: String,
-    val id: Int,
     val login: String,
     val url: String,
     val bio: String,

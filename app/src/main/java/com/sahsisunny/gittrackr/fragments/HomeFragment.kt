@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputEditText
 import com.sahsisunny.gittrackr.R
 
 class HomeFragment : Fragment() {
-    private lateinit var orgNameInput: EditText
+    private lateinit var orgNameInput: TextInputEditText
     private lateinit var exitButton: Button
     private lateinit var loginButton: Button
 
@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
         exitButton.setOnClickListener {
             requireActivity().finish()
         }
-        requireActivity().onBackPressedDispatcher.addCallback {
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
             requireActivity().finish()
         }
         return view
@@ -54,6 +54,4 @@ class HomeFragment : Fragment() {
             orgNameInput.error = "Please enter an organization name"
         }
     }
-
-
 }

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,8 +31,11 @@ class UserDetailsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_user_details, container, false)
 
         // Find the RecyclerView and set its layout manager
-        rvUserDetails = view.findViewById<RecyclerView>(R.id.user_details_rv)
+        rvUserDetails = view.findViewById(R.id.user_details_rv)
         rvUserDetails.layoutManager = LinearLayoutManager(requireContext())
+        val loader: ImageView = view.findViewById(R.id.loader)
+        loader.visibility = View.VISIBLE
+
 
         // Get the username from the arguments
         val username = arguments?.getString("userName")
@@ -46,6 +50,7 @@ class UserDetailsFragment : Fragment() {
                     val responseBody = response.body()!!
                     userAdapter = UserDetailsAdapter(requireContext(), responseBody)
                     rvUserDetails.adapter = userAdapter
+                    loader.visibility = View.GONE
                 }
 
                 override fun onFailure(call: retrofit2.Call<UserDetails>, t: Throwable) {
