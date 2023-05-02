@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
@@ -21,7 +22,7 @@ class UserAdapter(private var con: Context, private var list: List<UsersItem>) :
         var userImage: CircleImageView = itemView.findViewById(R.id.rv_user_image)
         var userName: TextView = itemView.findViewById(R.id.rv_user_name)
         var viewButton: MaterialButton = itemView.findViewById(R.id.rv_user_view)
-
+        val userView: RelativeLayout = itemView.findViewById(R.id.rv_user_item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -35,9 +36,14 @@ class UserAdapter(private var con: Context, private var list: List<UsersItem>) :
         Glide.with(con).load(user.avatar_url).into(holder.userImage)
 
         holder.viewButton.setOnClickListener {
-//            open user details fragment
             val bundle =
-                bundleOf("userName" to user.login) // for recieving data in UserDetailsFragment use arguments?.getString("userName")
+                bundleOf("userName" to user.login)
+            it.findNavController()
+                .navigate(R.id.action_userListFragment_to_userDetailsFragment, bundle)
+        }
+        holder.userView.setOnClickListener {
+            val bundle =
+                bundleOf("userName" to user.login)
             it.findNavController()
                 .navigate(R.id.action_userListFragment_to_userDetailsFragment, bundle)
         }
@@ -46,6 +52,4 @@ class UserAdapter(private var con: Context, private var list: List<UsersItem>) :
     override fun getItemCount(): Int {
         return list.size
     }
-
-
 }

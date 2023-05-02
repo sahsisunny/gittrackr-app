@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/rv_user_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
@@ -28,8 +29,9 @@
             android:text="@string/DUMMY_NAME"
             android:textSize="20sp" />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/rv_user_view"
+            style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
