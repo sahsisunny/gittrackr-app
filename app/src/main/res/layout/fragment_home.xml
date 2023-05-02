@@ -23,7 +23,6 @@
         android:textSize="18sp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filledTextField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -44,19 +43,42 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_margin="10dp"
+        android:padding="10dp"
         android:text="@string/view_list"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:icon="@drawable/view_icon" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/exit_button"
-        style="@style/Widget.MaterialComponents.Button.Icon"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="10dp"
-        android:text="@string/exit"
-        android:textSize="20sp"
-        app:icon="@drawable/round_logout" />
+        android:orientation="horizontal">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/exit_button"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="@string/exit"
+            android:textSize="15sp"
+            app:icon="@drawable/round_logout" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/delete_button"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="Delete Data"
+            android:textSize="15sp"
+            app:icon="@drawable/delete_icon" />
+
+
+    </LinearLayout>
 </LinearLayout>

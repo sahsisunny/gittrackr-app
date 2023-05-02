@@ -18,8 +18,6 @@ object UserDetailsAPIUtils {
             .create(UserAPIInterface::class.java)
 
         val call = retrofit.getUserDetails(username)
-
         call.enqueue(callback)
     }
-
 }

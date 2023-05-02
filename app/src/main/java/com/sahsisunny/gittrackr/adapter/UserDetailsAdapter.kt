@@ -56,5 +56,4 @@ class UserDetailsAdapter(private val con: Context, private val userDetails: User
             con.startActivity(intent)
         }
     }
-
 }

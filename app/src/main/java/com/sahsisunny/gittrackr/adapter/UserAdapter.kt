@@ -36,16 +36,14 @@ class UserAdapter(private var con: Context, private var list: List<UsersItem>) :
         Glide.with(con).load(user.avatar_url).into(holder.userImage)
 
         holder.viewButton.setOnClickListener {
-//            open user details fragment
             val bundle =
-                bundleOf("userName" to user.login) // for recieving data in UserDetailsFragment use arguments?.getString("userName")
+                bundleOf("userName" to user.login)
             it.findNavController()
                 .navigate(R.id.action_userListFragment_to_userDetailsFragment, bundle)
         }
         holder.userView.setOnClickListener {
-//            open user details fragment
             val bundle =
-                bundleOf("userName" to user.login) // for recieving data in UserDetailsFragment use arguments?.getString("userName")
+                bundleOf("userName" to user.login)
             it.findNavController()
                 .navigate(R.id.action_userListFragment_to_userDetailsFragment, bundle)
         }
@@ -54,6 +52,4 @@ class UserAdapter(private var con: Context, private var list: List<UsersItem>) :
     override fun getItemCount(): Int {
         return list.size
     }
-
-
 }

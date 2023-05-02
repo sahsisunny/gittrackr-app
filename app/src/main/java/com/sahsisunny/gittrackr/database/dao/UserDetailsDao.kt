@@ -17,4 +17,7 @@ interface UserDetailsDao {
     @Delete
     suspend fun delete(userDetails: UserDetails)
 
+    @Query("DELETE from userDetails")
+    suspend fun deleteAll()
+
 }

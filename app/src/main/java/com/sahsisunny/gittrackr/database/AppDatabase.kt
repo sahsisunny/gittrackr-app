@@ -1,6 +1,8 @@
 package com.sahsisunny.gittrackr.database
 
+import android.content.Context
 import androidx.room.Database
+import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.sahsisunny.gittrackr.database.dao.UserDao
 import com.sahsisunny.gittrackr.database.dao.UserDetailsDao
@@ -18,5 +20,21 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         const val DATABASE_NAME = "gittrackr-db"
+
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
+        fun getInstance(context: Context): AppDatabase {
+            if (INSTANCE == null) {
+                synchronized(AppDatabase::class) {
+
+                    INSTANCE = Room.databaseBuilder(
+                        context,
+                        AppDatabase::class.java,
+                        DATABASE_NAME
+                    ).build()
+                }
+            }
+            return INSTANCE!!
+        }
     }
 }

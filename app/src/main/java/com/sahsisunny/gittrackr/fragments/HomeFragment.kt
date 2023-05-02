@@ -5,20 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.room.Room
 import com.google.android.material.textfield.TextInputEditText
 import com.sahsisunny.gittrackr.R
+import com.sahsisunny.gittrackr.database.AppDatabase
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private lateinit var orgNameInput: TextInputEditText
     private lateinit var exitButton: Button
     private lateinit var loginButton: Button
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var deleteDataButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +30,7 @@ class HomeFragment : Fragment() {
         orgNameInput = view.findViewById(R.id.org_name_input)
         exitButton = view.findViewById(R.id.exit_button)
         loginButton = view.findViewById(R.id.login_button)
+        deleteDataButton = view.findViewById(R.id.delete_button)
 
         loginButton.setOnClickListener {
             handleLoginButtonClick()
@@ -38,10 +41,14 @@ class HomeFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(this) {
             requireActivity().finish()
         }
+        deleteDataButton.setOnClickListener {
+            lifecycleScope.launch {
+                handleDeleteButtonClick()
+            }
+        }
         return view
     }
 
-    // For handling the login button click
     private fun handleLoginButtonClick() {
         val orgName = orgNameInput.text.toString()
         val orgNameWithoutSpaces = orgName.replace("\\s".toRegex(), "")
@@ -53,5 +60,18 @@ class HomeFragment : Fragment() {
         } else {
             orgNameInput.error = "Please enter an organization name"
         }
+    }
+
+    private suspend fun handleDeleteButtonClick() {
+        val database = Room.databaseBuilder(
+            requireContext(),
+            AppDatabase::class.java,
+            AppDatabase.DATABASE_NAME
+        )
+            .allowMainThreadQueries()
+            .build()
+        database.userDao().deleteAll()
+        database.userDetailsDao().deleteAll()
+        Toast.makeText(requireContext(), "Data deleted", Toast.LENGTH_SHORT).show()
     }
 }

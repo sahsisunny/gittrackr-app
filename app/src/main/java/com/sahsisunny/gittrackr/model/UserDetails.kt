@@ -1,19 +1,20 @@
 package com.sahsisunny.gittrackr.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "userDetails")
 data class UserDetails(
     @PrimaryKey val id: Int,
-    val avatar_url: String,
-    val html_url: String,
-    val login: String,
-    val url: String,
-    val bio: String,
-    val created_at: String,
-    val followers: Int,
-    val following: Int,
-    val name: String,
-    val repos_url: String,
+    @ColumnInfo val login: String,
+    @ColumnInfo val avatar_url: String?,
+    @ColumnInfo val html_url: String,
+    @ColumnInfo val url: String,
+    @ColumnInfo val bio: String?,
+    @ColumnInfo val created_at: String,
+    @ColumnInfo val followers: Int,
+    @ColumnInfo val following: Int,
+    @ColumnInfo val name: String?,
+    @ColumnInfo val repos_url: String,
 )
