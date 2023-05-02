@@ -13,6 +13,7 @@ GitTrackr is an Android app that helps you track Github organizations and their 
 - Input field to enter the name of a Github organization
 - Displays a list of members belonging to the organization
 - Clicking on a member displays their details
+- Save the user details data on local and also add Delete data button for delete the all local data
 
 <!-- Table and row for screenshot wich show 4 image -->
 ## Screenshots
@@ -34,3 +35,4 @@ https://drive.google.com/file/d/1zVkYdWbRoKxkros7VkQgBE_ztn3uL4VD/view?usp=shari
 - Glide
 - Retrofit + Gson
 - Material UI
+- RoomDB
