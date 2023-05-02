@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +25,7 @@ class UserListFragment : Fragment() {
     lateinit var userAdapter: UserAdapter
     private lateinit var loader: ImageView
     private lateinit var orgName: String
+    private var responseData: List<UsersItem>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,8 +37,12 @@ class UserListFragment : Fragment() {
         rvUser.layoutManager = LinearLayoutManager(requireContext())
         loader = view.findViewById(R.id.loader)
         loader.visibility = View.VISIBLE
-        if (orgName != null) {
+        if (responseData == null && orgName != null) {
             setUserData()
+        } else {
+            userAdapter = UserAdapter(requireContext(), responseData!!)
+            rvUser.adapter = userAdapter
+            loader.visibility = View.GONE
         }
         return view
     }
@@ -52,13 +56,8 @@ class UserListFragment : Fragment() {
                         call: Call<List<UsersItem>>,
                         response: Response<List<UsersItem>>,
                     ) {
-                        val responseBody = response.body()!!
-                        userAdapter = UserAdapter(requireContext(), responseBody)
-                        Toast.makeText(
-                            requireContext(),
-                            "From API",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        responseData = response.body()!!
+                        userAdapter = UserAdapter(requireContext(), responseData!!)
                         rvUser.adapter = userAdapter
                         loader.visibility = View.GONE
                     }
