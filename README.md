@@ -28,7 +28,7 @@ https://user-images.githubusercontent.com/70854507/235409176-92eb70b0-5439-413c-
 
 ## APK
 
-https://drive.google.com/file/d/1zVkYdWbRoKxkros7VkQgBE_ztn3uL4VD/view?usp=sharing
+https://github.com/sahsisunny/gittrackr-app/releases/download/android/GitTrackr.apk
 
 ## Dependencies
 
