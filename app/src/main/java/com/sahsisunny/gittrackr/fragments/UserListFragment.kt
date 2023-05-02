@@ -1,13 +1,14 @@
 package com.sahsisunny.gittrackr.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sahsisunny.gittrackr.R
@@ -56,17 +57,27 @@ class UserListFragment : Fragment() {
                         call: Call<List<UsersItem>>,
                         response: Response<List<UsersItem>>,
                     ) {
-                        responseData = response.body()!!
-                        userAdapter = UserAdapter(requireContext(), responseData!!)
-                        rvUser.adapter = userAdapter
-                        loader.visibility = View.GONE
+                        if (response.isSuccessful) {
+                            responseData = response.body()!!
+                            userAdapter = UserAdapter(requireContext(), responseData!!)
+                            rvUser.adapter = userAdapter
+                            loader.visibility = View.GONE
+                        } else if (response.code() == 404) {
+                            findNavController().navigate(R.id.action_userListFragment_to_homeFragment)
+                            Toast.makeText(
+                                requireContext(),
+                                "Enter the valid organization name",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
 
-                    override fun onFailure(
-                        call: Call<List<UsersItem>>,
-                        t: Throwable,
-                    ) {
-                        Log.d("MainActivity", "onFailure: ${t.message}")
+                    override fun onFailure(call: Call<List<UsersItem>>, t: Throwable) {
+                        Toast.makeText(
+                            requireContext(),
+                            "Something went wrong",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 })
         }

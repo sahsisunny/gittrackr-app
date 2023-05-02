@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sahsisunny.gittrackr.R
@@ -69,25 +70,35 @@ class UserDetailsFragment : Fragment() {
                             call: Call<UserDetails>,
                             response: Response<UserDetails>,
                         ) {
-                            val responseBody = response.body()!!
-                            lifecycleScope.launch {
-                                database = AppDatabase.getInstance(requireContext())
-                                val userDetails =
-                                    database.userDetailsDao().getUserDetailsByLogin(username)
-                                if (userDetails != null) {
-                                    database.userDetailsDao().update(responseBody)
-                                } else {
-                                    database.userDetailsDao().insert(responseBody)
+                            if (response.isSuccessful) {
+                                val responseBody = response.body()!!
+                                lifecycleScope.launch {
+                                    database = AppDatabase.getInstance(requireContext())
+                                    val userDetails =
+                                        database.userDetailsDao().getUserDetailsByLogin(username)
+                                    if (userDetails != null) {
+                                        database.userDetailsDao().update(responseBody)
+                                    } else {
+                                        database.userDetailsDao().insert(responseBody)
+                                    }
                                 }
+                                userAdapter = UserDetailsAdapter(requireContext(), responseBody)
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Data from API",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                rvUserDetails.adapter = userAdapter
+                                loader.visibility = View.GONE
+
+                            } else {
+                                findNavController().navigate(R.id.action_userDetailsFragment_to_userListFragment)
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Error fetching user details",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
-                            userAdapter = UserDetailsAdapter(requireContext(), responseBody)
-                            Toast.makeText(
-                                requireContext(),
-                                "Data from API",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            rvUserDetails.adapter = userAdapter
-                            loader.visibility = View.GONE
                         }
 
                         override fun onFailure(
