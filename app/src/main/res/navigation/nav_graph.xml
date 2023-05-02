@@ -30,10 +30,17 @@
         <action
             android:id="@+id/action_userListFragment_to_userDetailsFragment"
             app:destination="@id/userDetailsFragment" />
+        <action
+            android:id="@+id/action_userListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/userDetailsFragment"
         android:name="com.sahsisunny.gittrackr.fragments.UserDetailsFragment"
         android:label="fragment_user_details"
-        tools:layout="@layout/fragment_user_details" />
+        tools:layout="@layout/fragment_user_details">
+        <action
+            android:id="@+id/action_userDetailsFragment_to_userListFragment"
+            app:destination="@id/userListFragment" />
+    </fragment>
 </navigation>
